@@ -1,0 +1,106 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    width:750px;
+    margin-left: 330px;;
+}
+
+.contrainer{
+    flex: 2;
+    margin:auto;
+    margin-top:80px;
+    background-color: aliceblue;
+    padding-bottom: 30px;
+    width:300px;
+    margin-bottom:100px;
+    
+   
+
+}
+.side-image {
+    flex: 1;
+    width:10px;
+    margin-top:80px;
+    margin-bottom:100px;
+    img{
+        width: 350px;
+        height: 630px;
+    }
+}
+
+
+
+.header{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap:9px;
+width:100%;
+margin-top:30px;
+}
+.text{color: rgb(32, 66, 24);
+font-size:30px ;
+font-weight: 700;}
+.underline{
+width:68px;
+height: 5px;
+background: rgb(32, 66, 24);
+border-radius: 8px;
+}
+.inputs
+{
+margin-top: 40px;
+display: flex;
+flex-direction: column;
+gap:25px;
+
+}
+.input{
+display: flex;
+align-items: center;
+margin: auto;
+width: 400px;
+height:60px;
+background: #eaeaea;
+border-radius: 18px;}
+.input img{margin:0px 30px;}
+.input input{height: 40px;
+    width:400px;
+    background: transparent;
+    border:none;
+outline:none;
+color: rgb(119, 113, 106);
+font-size: 17px;
+}
+.forggoten-password, .Links{padding-left: 40px;
+margin-top:27px;
+color: rgb(130, 132, 133);
+font-size: 14px;;}
+.forggoten-password span, .Links span a
+{
+   color:  rgb(32, 66, 24);
+   cursor: pointer;
+}
+
+.submit-contrainer button{
+    display: flex;
+        justify-content: center;
+        align-items:center;
+        width: 360px;
+        height: 50px;
+        padding: 8px;
+        color:#fff;
+        background-color: green;
+        border-radius: 50px;
+   }
+   .submit button{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 220px;
+    height: 59;
+    color:#fff;
+    background-color: green;
+    border-radius: 50px;
+
+}
