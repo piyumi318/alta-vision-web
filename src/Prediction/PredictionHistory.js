@@ -107,7 +107,7 @@ const userDataString = sessionStorage.getItem('userData');
                 <th>WindSpeed (km/h)</th>
                 <th>Sunshine Duration (min)</th>
                 <th>Radiation (J/kg)</th>
-                <th>Air Pressure (Pa)</th>
+                <th>Air Pressure (mb)</th>
                 <th>Air Temperature (°C)</th>
               
                 <th> Relative Air Humidity (%)</th>
@@ -142,6 +142,7 @@ const userDataString = sessionStorage.getItem('userData');
           </table>
           {/* Pagination */}
           {totalPages > 1 && (
+             <div className="pagination-container">
             <ul className="pagination">
               {[...Array(totalPages).keys()].map(pageNumber => (
                 <li key={pageNumber + 1} className={`page-item ${pageNumber + 1 === currentPage ? 'active' : ''}`}>
@@ -151,6 +152,7 @@ const userDataString = sessionStorage.getItem('userData');
                 </li>
               ))}
             </ul>
+            </div>
           )}
         </div>
         </div>

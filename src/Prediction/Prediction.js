@@ -95,19 +95,19 @@ month: Yup.number().typeError('Pelese Select Month'),
   }
   axios.post(url,details,header).then((result) =>{
     console.log(JSON.stringify(result, null, 2));
-    toast.success('Data Predicted Sucessfully');
+   // toast.success('Data Predicted Sucessfully');
     //const Predict = JSON.parse(result.data);
     setResult(result.data.prediction);
     setSolarPower(result.data.prediction);
-    const prediction = parseInt(result.data.prediction);
-    alert(prediction);
+    const prediction = result.data.prediction;
+   /// alert(prediction);
     const savedetails={
       ...details,
       "predictedBy": userData.userID,
       "solarPowerProduction":prediction,
       
      }
-     alert(savedetails.solarPowerProduction)
+   //  alert(savedetails.solarPowerProduction)
     axios.post('http://localhost:5089/api/Prediction/SavePrediction',savedetails,header).then((saveresult) =>{
       
      // setResult(result.data.prediction);
@@ -177,10 +177,18 @@ month: Yup.number().typeError('Pelese Select Month'),
             type="text"
             placeholder='Wind Speed (km/h)'
            value={Windspeed} 
-           onChange={(e)=> setWindspeed(e.target.value)}
+           onChange={(e) => {
+            const input = e.target.value;
+            // Allow only numeric characters and restrict length to maximum of 3 characters
+            const numericInput = input.replace(/\D/g, '').slice(0, 3);
+            setWindspeed(numericInput);
+           
+          }}
             {...register('windspeed')}
             className={`form-control ${errors.windspeed ? 'is-invalid' : null}`}
-           
+            inputMode="numeric" // Set inputMode to "numeric"
+            pattern="[0-9]*" 
+            maxLength={3}
           />
          
         </div>
@@ -195,6 +203,7 @@ month: Yup.number().typeError('Pelese Select Month'),
             onChange={(e)=> setSunshineDuration(e.target.value)}
             {...register('sunshineDuration')}
             className={`form-control ${errors.sunshineDuration ? 'is-invalid' : ''}`}
+            maxLength={2}
           />
           
         </div>
@@ -204,11 +213,12 @@ month: Yup.number().typeError('Pelese Select Month'),
           <input
             name="airPressure"
             type="text"
-            placeholder='Air Pressure (Pa)'
+            placeholder='Air Pressure (mb)'
             value={AirPressure} 
            onChange={(e)=> setAirPressure(e.target.value)}
             {...register('airPressure')}
             className={`form-control ${errors.airPressure ? 'is-invalid' : ''}`}
+            maxLength={4}
           />
         
         </div>
@@ -219,10 +229,11 @@ month: Yup.number().typeError('Pelese Select Month'),
             name="radiation"
             type="text"
             placeholder='Radiation (J/kg)'
-            value={AirTemperature} 
-           onChange={(e)=> setAirTemperature(e.target.value)}
+            value={Radiation} 
+            onChange={(e)=> setRadiation(e.target.value)}
             {...register('radiation')}
             className={`form-control ${errors.radiation ? 'is-invalid' : ''}`}
+            maxLength={3}
           />
          
         </div>
@@ -233,10 +244,12 @@ month: Yup.number().typeError('Pelese Select Month'),
             name="airTemperature"
             type="text"
             placeholder='Air Temperature (°C)'
-            value={Radiation} 
-           onChange={(e)=> setRadiation(e.target.value)}
+            value={AirTemperature} 
+            onChange={(e)=> setAirTemperature(e.target.value)}
+          
             {...register('airTemperature')}
             className={`form-control ${errors.airTemperature ? 'is-invalid' : ''}`}
+            maxLength={2}
           />
        
         </div>
@@ -257,6 +270,7 @@ month: Yup.number().typeError('Pelese Select Month'),
            onChange={(e)=> setRelativeAirHumidity(e.target.value)}
             {...register('relativeAirHumidity')}
             className={`form-control ${errors.relativeAirHumidity ? 'is-invalid' : ''}`}
+            maxLength={3}
           />
           <input type="hidden" name="solar" value={SolarPower}   onChange={(e)=> setSolarPower(e.target.value) }  {...register('solar')} className={`form-control ${errors.relativeAirHumidity ? 'is-invalid' : ''}`}/>
         </div>

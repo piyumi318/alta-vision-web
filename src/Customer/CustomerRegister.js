@@ -145,7 +145,7 @@ const onSubmit = async (data) => {
             placeholder='Date of Birth'
             {...register('birthdate')}
             className={`form-control ${errors.birthdate ? 'is-invalid' : ''}`}
-            max={current}
+          //  max={current}
           />
           </div>
           <div className="invalid-feedback">{errors.birthdate?.message}</div>

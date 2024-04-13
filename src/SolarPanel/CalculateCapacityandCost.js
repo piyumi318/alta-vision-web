@@ -36,7 +36,10 @@ const validationSchema = Yup.object().shape({
   .required('Monthly Electricity Usage Is Required')
   .min(1, 'Monthly Electricity Usage must be more than 0')
   .max(900, 'Monthly Electricity Usage cannot exceed 900')
-  .integer('Monthly Electricity Usage must be an integer'),
+  .integer('Monthly Electricity Usage must be an integer')
+  .typeError('Monthly Electricity Usage must be a number')
+,
+
 });
      
   
@@ -121,11 +124,12 @@ const validationSchema = Yup.object().shape({
         name="monthlyElectricityUsage"
         type="text"
         placeholder='Monthly Electricity Usage'
-        defaultValue={0} 
+        
         {...register('monthlyElectricityUsage')}
         className={`form-control ${errors.monthlyElectricityUsage ? 'is-invalid' : ''}`}
         inputMode="numeric" // Set inputMode to "numeric"
-        pattern="[0-9]*" 
+        pattern="[0-9]*"
+        maxLength={3}
        />
        
         </div>
@@ -148,9 +152,9 @@ const validationSchema = Yup.object().shape({
         <div id="resultModal" className="modal">
           <div className="modal-content">
             <span className="close" onClick={closeModal}>&times;</span>
-            <p>The Required Capacity Of Solar Panel: {price} Kwh</p>
+            <p>Total Cost of Required Capacity Of Solar Panel: {price} Kwh</p>
             
-            <p>The Cost of Required Capacity Of Solar Panel: {capacity.map((value, index) => (
+            <p> The Required Capacity Of Solar Panel: {capacity.map((value, index) => (
     <li key={index}>{value} Kwh</li>
   ))} </p>
           </div>

@@ -1,0 +1,38 @@
+/* PredictionHistory.css */
+
+
+  
+  
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 8px;
+  }
+  
+  .col-md-4 {
+    flex-basis: calc(33.33% - 20px); /* Adjust this value as needed */
+    margin-bottom: 10px; /* Adjust margin between items */
+  }
+  
+  .card {
+    border: 2px solid #302e2e;
+    border-radius: 5px;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 14px;
+  }
+  
+ 
+  

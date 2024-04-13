@@ -32,9 +32,15 @@
   .pagination {
     display: inline-flex;
     list-style: none;
-    padding-left: 350px;
+    
     
   }
+  
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust margin as needed */
+}
   
   
   

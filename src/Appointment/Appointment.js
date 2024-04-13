@@ -45,8 +45,26 @@ const validationSchema = Yup.object().shape({
   });
   const userDataString = sessionStorage.getItem('userData');
   const userData = JSON.parse(userDataString);
+  const alreadyexsist = () => {
+    return new Promise((resolve, reject) => {
+        axios.get('http://localhost:5089/api/Appoinment/Exsist?Id=' + userData.userID, header)
+            .then((result) => {
+                if (result.data) {
+                    resolve(true); // If user exists
+                } else {
+                    resolve(false); // If user does not exist
+                }
+            })
+            .catch(error => {
+                reject(error); // In case of any error
+            });
+    });
+}
+  
 const onSubmit = async (data) => {
-  try {alert(userData.userID);
+  try {
+    const exists = await alreadyexsist(data.email);
+    if (!exists) {
     let currentDate = new Date(); 
           const url = 'http://localhost:5089/api/Appoinment/MakeAppointment';
           const customer = {
@@ -77,7 +95,9 @@ const onSubmit = async (data) => {
            
            
         }
-      } 
+      } else {
+        toast.error('User Already Made an Appointment');
+    }}
    catch (error) {
       console.error('Error:', error);
       toast.error('An error occurred while Requesting Appointmnt');

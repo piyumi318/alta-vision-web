@@ -4,13 +4,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'C:/Users/piyumi/alta-vision-web/src/Style/PredictionHistory.css'; // Import your CSS file for component-specific styles
 import CustomerNav from 'C:/Users/piyumi/alta-vision-web/src/NavigationBar/CusNavigationBar';
-
+import 'C:/Users/piyumi/alta-vision-web/src/Style/Solar.css';
 
 const SolarPanel = () => {
 const header = new Headers();
   header.append('Access-Control-Allow-Origin', '*');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
 
   const [show, setShow] = useState(false);
   const [data, setData] = useState([]);
@@ -50,10 +50,11 @@ const header = new Headers();
       <div className="Reg-container">
         <div className='contrainer'>
           <div className='header'>
-            <div className='text'>Review Appointment</div>
+            <div className='text' style={{ paddingBottom: '10px' }}>Solar Panel Details</div>
           </div>
+         
           <div className="container mt-5">
-            <div className="row">
+            <div className="row" >
               {
                 data && data.length > 0 ?
                   data.slice(indexOfFirstItem, indexOfLastItem).map((prediction, index) => (
@@ -61,12 +62,13 @@ const header = new Headers();
                       <div className="card">
                         <div className="card-body">
                           <h5 className="card-title">Solar Panel ID: {prediction.solarPanelId}</h5>
+                          <p className="card-text">Name: {prediction.solarPanelName}</p>
                           <p className="card-text">Capacity: {prediction.capacity}</p>
                           <p className="card-text">Price: {prediction.price}</p>
-                          <p className="card-text">Created By: {prediction.createdBy}</p>
-                          <p className="card-text">Status: {prediction.status}</p>
+                          
+                        
                           {/* Add any other details you want to display */}
-                          <button className="btn btn-primary">Options</button>
+                          
                         </div>
                       </div>
                     </div>
@@ -75,6 +77,7 @@ const header = new Headers();
             </div>
             {/* Pagination */}
             {totalPages > 1 && (
+              <div className="pagination-container">
               <ul className="pagination">
                 {[...Array(totalPages).keys()].map(pageNumber => (
                   <li key={pageNumber + 1} className={`page-item ${pageNumber + 1 === currentPage ? 'active' : ''}`}>
@@ -84,6 +87,7 @@ const header = new Headers();
                   </li>
                 ))}
               </ul>
+              </div>
             )}
           </div>
         </div>
