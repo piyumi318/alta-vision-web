@@ -132,6 +132,12 @@ const {
         </div>
         <div className="invalid-feedback">{errors.email?.message}</div>
         </div>
+        <div className="submit-CusRegcontrainer">
+       
+       <button type="submit" className="btn btn-primary">
+          Update
+         </button>
+    </div>
       </div>
      
         
@@ -168,18 +174,19 @@ const {
             {errors.confirmPassword?.message}
           </div>
           
-        
+          </div>
         <div className="submit-CusRegcontrainer">
        
         <button type="submit" className="btn btn-primary">
-           Sign Up
+           Add
           </button>
      </div>
-        </div>
+        
   </div>
   </div>
       </form>
-    
+    <br />
+    <br />
    </div>
             <div className="container mt-5">
               
